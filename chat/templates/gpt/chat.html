@@ -35,10 +35,24 @@
                 <button id="chatroom-btn">채팅방</button>
                 <button id="function-btn">기능선택</button> 
             </div>  
+            <a href="{% url 'chat:index' %}"><button id="chatroom-btn1">뒤로가기</button></a>
             <!--아래 div에 채팅방 리스트 넣으면돼요!-->
-            <div class="chat-room">
-                
+            <!--아래 div에 채팅방 리스트 넣으면돼요!-->
+            <!--<div class="chat-room">-->
+            <!-- '팀별 새로운 채팅' 섹션 수정 -->
+            <div id="new-chat-section" style="display:none;">
+                <!-- 새로운 채팅 시작 버튼 -->
+                {% comment %} <button id="new-chat-btn">팀별 새로운 채팅</button> {% endcomment %}
+                <!-- 팀 이름 입력 필드 -->
+                <div id="new-chat-name-input-section" style="display:none;">
+                    <!-- 입력창에 '팀 명을 입력하세요' 플레이스홀더 추가 -->
+                    <input type="text" id="new-chat-name" placeholder="팀 명을 입력하세요">
+                    <button id="create-chat">생성하기</button>
+                </div>
+                <!-- 채팅방 리스트 -->
+                <div id="chat-rooms-container"></div>
             </div>
+            <!--</div>-->
             <div class="check-list">
                 <div class="check-mode">
                     <input type="checkbox" id="function1" name="function1" />
@@ -65,7 +79,14 @@
                         </div>
                     </div>
                 {% endfor %} {% endcomment %}
-                
+                {% if question %}
+                    <div class="message user-message">
+                        <div id="messages" class="bubble">
+                            <span class="text">{{question}}</span>
+                        </div>
+                    </div>
+                {% endif %}
+
                 {% for message in messages %}
                     {% if message.author == user %}
                     <div class="message bot-message">
@@ -111,6 +132,106 @@
             </script>
         </div>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 변수 선언: 채팅 데이터, 현재 채팅방, DOM 요소
+            var chats = {};
+            var currentChatRoom = '';
+
+            var chatroomBtn = document.getElementById('chatroom-btn');
+            var functionBtn = document.getElementById('function-btn');
+            //var chatRoomDiv = document.querySelector('.chat-room');
+            var newChatBtn = document.getElementById('new-chat-btn');
+            var createChatBtn = document.getElementById('create-chat');
+            var newChatSection = document.getElementById('new-chat-section');
+            var checkList = document.querySelector('.check-list');
+            var newChatNameInputSection = document.getElementById('new-chat-name-input-section');
+            var newChatNameInput = document.getElementById('new-chat-name');
+            var chatRoomsContainer = document.getElementById('chat-rooms-container');
+            var messageDisplay = document.querySelector('.message-display');
+
+            // 채팅방 열기 함수: 선택된 팀의 채팅 내용 표시
+            function openChatRoom(teamName) {
+                currentChatRoom = teamName;
+                var messages = chats[teamName] || [];
+                messageDisplay.innerHTML = messages.map(function (msg) {
+                    return '<div class="message">' + msg + '</div>';
+                }).join('');
+            }
+
+            // 채팅방 생성 함수: 새 팀명으로 채팅방 생성
+            function createChatRoom(teamName) {
+                if (!chats[teamName]) {
+                    chats[teamName] = [];
+            
+                    var chatRoomButton = document.createElement('button');
+                    chatRoomButton.textContent = teamName;
+                    chatRoomButton.className = 'chat-room-button';
+                    chatRoomButton.onclick = function () {
+                        openChatRoom(teamName);
+                    };
+                    chatRoomsContainer.appendChild(chatRoomButton);
+                }
+            }
+
+            // '팀별 새로운 채팅' 버튼 클릭 시
+            newChatBtn.addEventListener('click', function () {
+                newChatNameInputSection.style.display = 'block';
+                // 입력 필드 초기화 및 플레이스홀더 설정
+                newChatNameInput.value = '';
+                newChatNameInput.placeholder = '팀 명을 입력하세요';
+            });
+        
+                // '채팅방' 버튼 클릭 시
+                chatroomBtn.addEventListener('click', function () {
+                newChatSection.style.display = 'block';
+                checkList.style.display = 'none'; // 기능 선택 숨김
+                chatroomBtn.classList.add('active-btn');
+                functionBtn.classList.remove('active-btn');
+                messageDisplay.innerHTML = '';
+            });
+
+                // '기능선택' 버튼 클릭 시
+                functionBtn.addEventListener('click', function () {
+                newChatSection.style.display = 'none';
+                checkList.style.display = 'block'; // 기능 선택 표시
+                functionBtn.classList.add('active-btn');
+                chatroomBtn.classList.remove('active-btn');
+                messageDisplay.innerHTML = '';
+            });
+
+            // '팀별 새로운 채팅' 버튼 클릭 시
+                newChatBtn.addEventListener('click', function () {
+                    newChatNameInputSection.style.display = 'block';
+                    newChatNameInput.value = '';
+                    newChatNameInput.placeholder = '팀 명을 입력하세요';
+                });
+
+
+            // '생성하기' 버튼 클릭 시
+            createChatBtn.addEventListener('click', function () {
+                var teamName = document.getElementById('new-chat-name').value;
+                if(teamName) {
+                    createChatRoom(teamName); // 여기에서 createChatRoom 함수 호출
+                    newChatNameInput.value = '';
+                    newChatNameInputSection.style.display = 'none';
+                }
+            });
+
+            var messageForm = document.querySelector('.message-input form');
+            messageForm.onsubmit = function (e) {
+                e.preventDefault();
+                var input = this.querySelector('input[name="question"]');
+                var message = input.value.trim();
+                if (message && currentChatRoom) {
+                    chats[currentChatRoom].push(message);
+                    input.value = '';
+                    openChatRoom(currentChatRoom);
+                }
+            };
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var chatroomBtn = document.getElementById('chatroom-btn');

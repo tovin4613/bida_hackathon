@@ -172,6 +172,8 @@ main .mode {
 
 .user-message .bubble {
   background: #E0E0E0;
+  order: 1;
+  width: 40%;
 }
 
 .message {

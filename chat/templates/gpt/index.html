@@ -53,10 +53,12 @@
     <main>
         <div class="side-panel">
             <div class="mode">
-                <button id="chatroom-btn">채팅방</button>
+                <button id="chatroom-btn1">채팅방</button>
                 <button id="function-btn">기능선택</button> 
             </div>  
-            
+            <a href='언어순화/'><button id="create-chat">언어순화</button></a>
+            <a href='업무도우미/'><button id="create-chat">업무도우미</button></a>
+            <a href='고객데이터수집/'><button id="create-chat">고객데이터수집</button></a>
             <!--아래 div에 채팅방 리스트 넣으면돼요!-->
             <!--<div class="chat-room">-->
             <!-- '팀별 새로운 채팅' 섹션 수정 -->
@@ -68,6 +70,7 @@
                     <!-- 입력창에 '팀 명을 입력하세요' 플레이스홀더 추가 -->
                     <input type="text" id="new-chat-name" placeholder="팀 명을 입력하세요">
                     <button id="create-chat">생성하기</button>
+                    
                 </div>
                 <!-- 채팅방 리스트 -->
                 <div id="chat-rooms-container"></div>

@@ -7,10 +7,6 @@
     font-family: 'NanumHaRamCe';
 }
 
-#summary-text{
-    font-size : 100px;
-}
-
 html, body {
     margin: 0;
     height: 100%;
@@ -20,28 +16,28 @@ html, body {
 
 /* header */
 header {
-    height: 60px;
+    height: 80px;
     background-color: white;
-    color: #371722; 
+    color: black; 
     /* 네비게이션 바 타이틀 글자 색 */
 }
 
 header>.wrap {
-    max-width: 720px;
+    max-width: 1400px;
     margin: 0 auto; /* 레이아웃 가운데 정렬 */
     padding: 12px 20px;
 }
 
 header>.wrap>.logo {
-    font-size: 32px;
-    margin-top: 10px;
+    font-size: 50px;
+    margin-top: 5px;
     font-weight: bold;
 }
 
 header>.wrap>ul {
     float: right;
     list-style: none;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 header>.wrap>ul>li {

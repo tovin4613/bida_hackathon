@@ -35,33 +35,33 @@
                     <input type="checkbox" id="function3" name="function3" />
                     <label for="function3">타직군 간 대화</label>
                 </div>
+                
             </div>
         </div>
 
         <div class="message-section">
             <div class="message-display">
                 <!-- Chat messages will be displayed here -->
-                {% for hist in user_history %}
+                
                     <div class="message user-message">
                         <div class="bubble">
-                            <span class="text">{{ hist.chat_content }}</span>
+                            <span class="text">{{ result }}</span>
                         </div>
                         
-                        </div>
+                        {% comment %} </div>
                         <div class="message bot-message">
                         <div class="bubble">
-                            <span class="text">{{hist.chat_response}}</span>
-                        </div>
+                            <span class="text">{{}}</span>
+                        </div> {% endcomment %}
                     </div>
-                {% endfor %}
-                
+        
             </div>
 
-            <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+            <form action="" method="post" entype="application/x-www-form-urlencoded">
                 <div class="message-input">
                 {% csrf_token %}
                   <input type="text" placeholder="메시지를 입력하세요..." name=question>
-                  <button>보내기</button>
+                  <button type="submit">보내기</button>
                 </div>
             </form>
             </div>

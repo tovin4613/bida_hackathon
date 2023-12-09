@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'd2coding';
+    src: url('../fonts/D2Coding.ttc');
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    background-color: #abcee2;
+    color: white;
+    font-family: 'Roboto', 'd2coding', sans-serif;
+}
+
+/* header */
+header {
+    height: 60px;
+    background-color: white;
+    color: #371722; 
+    /* 네비게이션 바 타이틀 글자 색 */
+}
+
+header>.wrap {
+    max-width: 720px;
+    margin: 0 auto; /* 레이아웃 가운데 정렬 */
+    padding: 12px 20px;
+}
+
+header>.wrap>.logo {
+    font-size: 32px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+header>.wrap>ul {
+    float: right;
+    list-style: none;
+    margin-top: 10px;
+}
+
+header>.wrap>ul>li {
+    float: left;
+    margin-left: 15px;
+}
+
+header>.wrap>ul>li>a {
+    color: #371722;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header>.wrap>ul>li>a.active {
+    color: #343a40;
+    border-bottom: 3px solid #343a40;
+}
+
+/* footer */
+footer {
+    max-width: 720px;
+    margin: 0 auto;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+}
+footer>p {
+    margin: 0;
+}
+
+/* main */
+main {
+    height: calc(100% - 120px);
+    max-width: 720px;
+    padding: 0 20px;
+    margin: 0 auto; /* 레이아웃 중앙 */
+    text-align: center; /* 텍스트 중앙 */
+    display: table;
+}
+
+main>.wrap {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+main>.wrap>p {
+    font-size: 20px;
+}
+
+main>.wrap>button {
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main>.wrap>button:hover {
+    background-color: #112378;
+    color: white;
+}
+
+

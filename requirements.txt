@@ -1,0 +1,7 @@
+mlflow
+opencv-python
+Pillow
+Django
+tensorflow-cpu
+openai
+#example

@@ -1,0 +1,31 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+{% endblock %}
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="chat-container">
+  <div class="chat-header">ChatGPT</div>
+  <div class="chat-window">
+    <div class="message user-message">
+      <div class="bubble">
+        {% comment %} <i class="material-icons">face</i> {% endcomment %}
+        <span class="text">{{question}}</span>
+      </div>
+    </div>
+    <div class="message bot-message">
+      <div class="bubble">
+        {% comment %} <i class="material-icons">android</i> {% endcomment %}
+        <span class="text">{{result}}</span>
+      </div>
+    </div>
+  </div>
+  <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div class="chat-input">
+      <input type="text" placeholder="메시지를 입력하세요..." name=question>
+      <button><i class="material-icons">send</i></button>
+    </div>
+  </form>
+</div>

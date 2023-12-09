@@ -1,0 +1,39 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+{% endblock %}
+{% comment %} <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div id="file-module-0">
+        <label>chatgtp에게 요청하기</label>
+        <textarea id="question" name="question"></textarea>
+    </div>
+    <div><button id="text-button" type="submit" >질문</button></div>
+</form> {% endcomment %}
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="chat-container">
+  <div class="chat-header">ChatGPT</div>
+  <div class="chat-window">
+    <div class="message user-message">
+      {% comment %} <div class="bubble">
+        <i class="material-icons">face</i>
+        <span class="text">안녕하세요!</span>
+      </div> {% endcomment %}
+    </div>
+    <div class="message bot-message">
+      {% comment %} <div class="bubble">
+        <i class="material-icons">android</i>
+        <span class="text">안녕하세요, 어떻게 도와드릴까요?</span>
+      </div> {% endcomment %}
+    </div>
+  </div>
+  <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div class="chat-input">
+      <input type="text" placeholder="메시지를 입력하세요..." name=question>
+      <button><i class="material-icons">send</i></button>
+    </div>
+  </form>
+</div>

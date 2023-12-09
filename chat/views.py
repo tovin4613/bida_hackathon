@@ -30,8 +30,6 @@ def index(request):
     }
 
     result = completion_executor.execute(request_data)
-    print('=' * 50)
-    print(result[-2]['message']['content'])
     return render(request, 'gpt/index.html')
 
 def chat(request):

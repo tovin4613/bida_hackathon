@@ -1,43 +1,47 @@
 *{
     font-family: 'NanumGothic';
+    color: #000000;
 }
 
 .logo{
     font-family: 'NanumHaRamCe';
-    font-size: 50px;
 }
+
+#summary-text{
+    font-size : 100px;
+}
+
 html, body {
     margin: 0;
     height: 100%;
     background-color: #dcdcdc;
     color: white;
-    font-family: 'Roboto', 'd2coding', sans-serif;
 }
 
 /* header */
 header {
-    height: 80px;
+    height: 60px;
     background-color: white;
-    color: black; 
+    color: #371722; 
     /* 네비게이션 바 타이틀 글자 색 */
 }
 
 header>.wrap {
-    max-width: 1400px;
+    max-width: 720px;
     margin: 0 auto; /* 레이아웃 가운데 정렬 */
     padding: 12px 20px;
 }
 
 header>.wrap>.logo {
-    font-size: 50px;
-    margin-top: 5px;
+    font-size: 32px;
+    margin-top: 10px;
     font-weight: bold;
 }
 
 header>.wrap>ul {
     float: right;
     list-style: none;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 header>.wrap>ul>li {
@@ -59,10 +63,10 @@ header>.wrap>ul>li>a.active {
 /* slide banner */
 .banner-container {
     position: relative;
-    width:  30vw;
-    max-width: 800px; /* 최대 너비 설정 */
+    width:  500px;
+    height: 300px; /* 최대 너비 설정 */
     margin: auto;
-    overflow: hidden;
+    overflow:hidden;
 }
 
 .banner-slides {
@@ -167,3 +171,21 @@ main>.wrap>button:hover {
     background-color: #dcdcdc;
     color: white;
 }
+
+
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* .meme-section {
+    width: 20%;
+} */
+
+/* .description-section {
+    width: 80%;
+    padding: 30px; 
+    text-align: right;
+}  */

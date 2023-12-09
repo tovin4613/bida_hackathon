@@ -1,12 +1,11 @@
-@font-face {
-    font-family: 'd2coding';
-    src: url('../fonts/D2Coding.ttc');
+*{
+    font-family: 'NanumHaRamCe';
 }
 
 html, body {
     margin: 0;
     height: 100%;
-    background-color: #abcee2;
+    background-color: #dcdcdc;
     color: white;
     font-family: 'Roboto', 'd2coding', sans-serif;
 }
@@ -95,7 +94,7 @@ main>.wrap>button {
 }
 
 main>.wrap>button:hover {
-    background-color: #112378;
+    background-color: #dcdcdc;
     color: white;
 }
 

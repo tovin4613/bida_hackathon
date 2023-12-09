@@ -1,16 +1,20 @@
-/* Existing styles */
+*{
+  font-family: 'NanumHaRamCe';
+  font-size: 20;
+}
+
 html, body {
   margin: 0;
   height: 100%;
   background-color: #E1F5FE;
-  color: black;
+  color: #343a40;
 }
 
 /* header */
 header {
   height: 60px;
   background-color: white;
-  color: #371722; 
+  color: #343a40; 
   /* 네비게이션 바 타이틀 글자 색 */
 }
 
@@ -38,7 +42,7 @@ header>.wrap>ul>li {
 }
 
 header>.wrap>ul>li>a {
-  color: #371722;
+  color: #343a40;
   text-decoration: none;
   font-weight: bold;
 }
@@ -87,9 +91,9 @@ main .side-panel button {
   width: 100%;
   padding: 10px 0;
   margin-bottom: 10px;
-  background-color: #8aceed;
+  background-color: #ffffff;
+  color:#343a40;
   border: none;
-  border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
@@ -97,7 +101,7 @@ main .side-panel button {
 }
 
 main .side-panel button:hover {
-  background-color: #B3E5FC;
+  background-color: #dcdcdc;
 }
 
 main .message-section {
@@ -138,17 +142,17 @@ main .mode {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  background-color: #2196F3; /* Changed to blue */
+  background-color: #dcdcdc; /* Changed to blue */
   color: white;
   cursor: pointer;
 }
 
 .message-input button:hover {
-  background-color: #1E88E5;
+  background-color: #95a0aa;
 }
 
 .bot-message .bubble {
-  background: #52c0f2;
+  background: #343a40;
   color: white;
   margin-left: auto;
   order: 1;
@@ -169,4 +173,26 @@ main .mode {
   border-radius: 15px;
   display: flex;
   align-items: center;
+}
+
+
+
+/* 기능 */
+.check-list {
+  background-color: #FFFFFF;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.check-mode {
+  margin-bottom: 10px;
+}
+
+.check-mode input {
+  margin-right: 5px;
+}
+
+/* Style for the active checkbox label */
+.check-mode input:checked{
+  color: #c0c0c0;
 }

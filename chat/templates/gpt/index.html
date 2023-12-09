@@ -27,6 +27,8 @@
             <ul>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'chat:index' %}" class="active">Chat</a></li>
+                <li><a href="{% url 'index' %}">Login</a></li>
+                <li><a href="{% url 'index' %}">Join</a></li>
             </ul>
         </nav>
     </header>
@@ -43,15 +45,16 @@
             <div class="check-list">
                 <div class="check-mode">
                     <input type="radio" id="function1" name="function" />
-                    <label for="function1">언어 순화</label>
+                    <span> 언어 순화 </span>
                 </div>
                 <div class="check-mode">
                     <input type="radio" id="function2" name="function" />
-                    <label for="function2">MBTI 맞춤 대화</label>
+                    <span> MBTI 맞춤 대화 </span>
+                    {% comment %} <label for="function2">MBTI 맞춤 대화</label> {% endcomment %}
                 </div>
                 <div class="check-mode">
                     <input type="radio" id="function3" name="function" />
-                    <label for="function3">타직군 간 대화</label>
+                    <span> 타직군 간 대화 </span>
                 </div>
                 
             </div>

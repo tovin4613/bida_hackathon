@@ -4,40 +4,40 @@
 
 .logo{
   font-family: 'NanumHaRamCe';
-  font-size: 50;
+  font-size: 50px;
 }
 
 html, body {
   margin: 0;
   height: 100%;
-  background-color: #E1F5FE;
+  background-color: white;
   color: #343a40;
 }
 
 /* header */
 header {
-  height: 60px;
+  height: 80px;
   background-color: white;
-  color: #343a40; 
+  color: black; 
   /* 네비게이션 바 타이틀 글자 색 */
 }
 
 header>.wrap {
-  max-width: 720px;
+  max-width: 1400px;
   margin: 0 auto; /* 레이아웃 가운데 정렬 */
   padding: 12px 20px;
 }
 
 header>.wrap>.logo {
-  font-size: 32px;
-  margin-top: 10px;
+  font-size: 50px;
+  margin-top: 5px;
   font-weight: bold;
 }
 
 header>.wrap>ul {
   float: right;
   list-style: none;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 header>.wrap>ul>li {
@@ -85,10 +85,13 @@ main {
 }
 
 main .side-panel {
-  width: 300px;
+  width: 200px;
   background-color: #FFFFFF;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  margin-left: 100px;
+  margin-bottom: 50px;
+  margin-top: 10px;
 }
 
 main .side-panel button {
@@ -114,6 +117,10 @@ main .message-section {
   background-color: #F8F9FA;
   display: flex;
   flex-direction: column;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  max-width: 1000px;
 }
 
 main .mode {
@@ -147,7 +154,7 @@ main .mode {
   border: none;
   border-radius: 5px;
   background-color: #dcdcdc; /* Changed to blue */
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -196,6 +203,11 @@ main .mode {
   margin-right: 5px;
 }
 
+[type="radio"],
+span {
+  vertical-align: middle;
+}
+
 /* 기본스타일을 없애고, 버튼모양을 구현한다. */
 input[type='radio'] {
   -webkit-appearance: none; 
@@ -207,6 +219,7 @@ input[type='radio'] {
   border-radius: 50%;
   outline: none; 
   cursor: pointer;
+  position: relative;
 }
 
 /* // 체크될 시에, 변화되는 스타일 설정 */

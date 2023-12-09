@@ -5,6 +5,18 @@
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png">
     <link rel="stylesheet" href="{% static 'gtp/style.css' %}">
     <title>비비빅</title>
+
+    <style>
+        .chat-room, .check-list {
+            display: none;
+        }
+
+        /* Style for active button */
+        .active-btn {
+            background-color: #3498db; /* You can change the color as per your design */
+            color: #fff; /* Text color for better visibility */
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -26,6 +38,9 @@
                 <div class="check-mode">
                     <input type="checkbox" id="function1" name="function1" />
                     <label for="function1">언어 순화</label>
+                </div>
+                <!--아래 div에 채팅방 리스트 넣으면돼요!-->
+                <div class="chat-room">
                 </div>
                 <div class="check-mode">
                     <input type="checkbox" id="function2" name="function2" />
@@ -67,5 +82,35 @@
             </div>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var chatroomBtn = document.getElementById('chatroom-btn');
+            var functionBtn = document.getElementById('function-btn');
+            var chatRoomDiv = document.querySelector('.chat-room');
+            var checkListDiv = document.querySelector('.check-list');
+
+            // Automatically click the "채팅방" button on page load
+            chatroomBtn.click();
+
+            chatroomBtn.addEventListener('click', function () {
+                chatRoomDiv.style.display = 'block';
+                checkListDiv.style.display = 'none';
+
+                // Add or remove the 'active-btn' class based on the button click
+                chatroomBtn.classList.add('active-btn');
+                functionBtn.classList.remove('active-btn');
+            });
+
+            functionBtn.addEventListener('click', function () {
+                chatRoomDiv.style.display = 'none';
+                checkListDiv.style.display = 'block';
+
+                // Add or remove the 'active-btn' class based on the button click
+                chatroomBtn.classList.remove('active-btn');
+                functionBtn.classList.add('active-btn');
+            });
+        });
+    </script>
 </body>
 </html>

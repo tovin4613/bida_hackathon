@@ -29,7 +29,7 @@ def index(request):
 
     result = completion_executor.execute(request_data)
     print(result)
-    return render(request, 'gpt/index2.html')
+    return render(request, 'gpt/index.html')
 
 def chat(request):
     

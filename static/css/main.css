@@ -1,5 +1,14 @@
 *{
+    font-family: 'NanumGothic';
+    color: #000000;
+}
+
+.logo{
     font-family: 'NanumHaRamCe';
+}
+
+#summary-text{
+    font-size : 100px;
 }
 
 html, body {
@@ -7,7 +16,6 @@ html, body {
     height: 100%;
     background-color: #dcdcdc;
     color: white;
-    font-family: 'Roboto', 'd2coding', sans-serif;
 }
 
 /* header */
@@ -52,6 +60,74 @@ header>.wrap>ul>li>a.active {
     border-bottom: 3px solid #343a40;
 }
 
+/* slide banner */
+.banner-container {
+    position: relative;
+    width:  500px;
+    height: 300px; /* 최대 너비 설정 */
+    margin: auto;
+    overflow:hidden;
+}
+
+.banner-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.banner-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit:cover;
+}
+
+/* Optional: Add styling for navigation buttons or indicators */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Optional: Add styling for indicator dots */
+.dot-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+
+.active-dot {
+    background-color: #717171;
+}
+
 /* footer */
 footer {
     max-width: 720px;
@@ -66,12 +142,10 @@ footer>p {
 
 /* main */
 main {
-    height: calc(100% - 120px);
-    max-width: 720px;
-    padding: 0 20px;
-    margin: 0 auto; /* 레이아웃 중앙 */
-    text-align: center; /* 텍스트 중앙 */
-    display: table;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 100% 높이를 차지하도록 설정 */
 }
 
 main>.wrap {
@@ -99,3 +173,19 @@ main>.wrap>button:hover {
 }
 
 
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* .meme-section {
+    width: 20%;
+} */
+
+/* .description-section {
+    width: 80%;
+    padding: 30px; 
+    text-align: right;
+}  */

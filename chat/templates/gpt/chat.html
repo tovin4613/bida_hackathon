@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png">
+    <link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumHaRamCe.css" rel="stylesheet">
+    <title>스며듦</title>
+
+    <style>
+        .chat-room, .check-list {
+            display: none;
+        }
+
+        /* Style for active button */
+        .active-btn {
+            background-color: #3498db; /* You can change the color as per your design */
+            color: #fff; /* Text color for better visibility */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="wrap">
+            <label class="logo">스며듦</label>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'chat:index' %}" class="active">Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="side-panel">
+            <div class="mode">
+                <button id="chatroom-btn">채팅방</button>
+                <button id="function-btn">기능선택</button> 
+            </div>  
+            <!--아래 div에 채팅방 리스트 넣으면돼요!-->
+            <div class="chat-room">
+                
+            </div>
+            <div class="check-list">
+                <div class="check-mode">
+                    <input type="checkbox" id="function1" name="function1" />
+                    <label for="function1">언어 순화</label>
+                </div>
+                <div class="check-mode">
+                    <input type="checkbox" id="function2" name="function2" />
+                    <label for="function2">MBTI 맞춤 대화</label>
+                </div>
+                <div class="check-mode">
+                    <input type="checkbox" id="function3" name="function3" />
+                    <label for="function3">타직군 간 대화</label>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="message-section">
+            <div class="message-display">
+                {% comment %} {% for r in result  %}
+                    <div class="message user-message">
+                        <div class="bubble">
+                            <span class="text">{{ r }}</span>
+                        </div>
+                    </div>
+                {% endfor %} {% endcomment %}
+                
+                {% for message in messages %}
+                    {% if message.author == user %}
+                    <div class="message bot-message">
+                        <div id="messages" class="bubble">
+                            <span class="text">{{ message.author.username }}: {{ message.content }}</span>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="message user-message">
+                        <div id="messages" class="bubble">
+                            <span class="text">{{ message.author.username }}: {{ message.content }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- 아래 부분이 첫 번째 템플릿에서 가져온 form 부분입니다. -->
+            {% comment %} <form method="post">
+                {% csrf_token %}
+                <textarea name="message" placeholder="Your message"></textarea>
+                <button type="submit">Send</button>
+            </form> {% endcomment %}
+
+            <form action="" method="post" entype="application/x-www-form-urlencoded">
+                {% csrf_token %}
+                <div class="message-input">
+                    <input type="text" placeholder="메시지를 입력하세요..." name=question>
+                    <button name="sendRequest">보내기</button>
+                </div>
+            </form>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script>
+                setInterval(function(){
+                    $.ajax({
+                        url: '',
+                        success: function(data){
+                            $('.message-display').html($(data).find('.message-display').html());
+                        }
+                    });
+                }, 1000);
+            </script>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var chatroomBtn = document.getElementById('chatroom-btn');
+            var functionBtn = document.getElementById('function-btn');
+            var chatRoomDiv = document.querySelector('.chat-room');
+            var checkListDiv = document.querySelector('.check-list');
+
+            // Automatically click the "채팅방" button on page load
+            chatroomBtn.click();
+
+            chatroomBtn.addEventListener('click', function () {
+                chatRoomDiv.style.display = 'block';
+                checkListDiv.style.display = 'none';
+
+                // Add or remove the 'active-btn' class based on the button click
+                chatroomBtn.classList.add('active-btn');
+                functionBtn.classList.remove('active-btn');
+            });
+
+            functionBtn.addEventListener('click', function () {
+                chatRoomDiv.style.display = 'none';
+                checkListDiv.style.display = 'block';
+
+                // Add or remove the 'active-btn' class based on the button click
+                chatroomBtn.classList.remove('active-btn');
+                functionBtn.classList.add('active-btn');
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

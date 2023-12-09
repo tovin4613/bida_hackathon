@@ -3,177 +3,8 @@
 <html>
 <head>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png">
-
+    <link rel="stylesheet" href="{% static 'gtp/style.css' %}">
     <title>비비빅</title>
-    <style>
-        /* Existing styles */
-        html, body {
-            margin: 0;
-            height: 100%;
-            background-color: #E1F5FE;
-            color: black;
-        }
-
-        /* header */
-        header {
-            height: 60px;
-            background-color: white;
-            color: #371722; 
-            /* 네비게이션 바 타이틀 글자 색 */
-        }
-
-        header>.wrap {
-            max-width: 720px;
-            margin: 0 auto; /* 레이아웃 가운데 정렬 */
-            padding: 12px 20px;
-        }
-
-        header>.wrap>.logo {
-            font-size: 32px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        header>.wrap>ul {
-            float: right;
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        header>.wrap>ul>li {
-            float: left;
-            margin-left: 15px;
-        }
-
-        header>.wrap>ul>li>a {
-            color: #371722;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        header>.wrap>ul>li>a.active {
-            color: #343a40;
-            border-bottom: 3px solid #343a40;
-        }
-
-        header .title {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        header ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-
-        header ul li {
-            margin-left: 20px;
-        }
-
-        header ul li a {
-            color: #6c757d;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Main content styles */
-        main {
-            display: flex;
-            height: calc(100% - 60px); /* Adjusted for header height */
-        }
-
-        main .side-panel {
-            width: 300px;
-            background-color: #FFFFFF;
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-
-        main .side-panel button {
-            width: 100%;
-            padding: 10px 0;
-            margin-bottom: 10px;
-            background-color: #52c0f2;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        main .side-panel button:hover {
-            background-color: #B3E5FC;
-        }
-
-        main .message-section {
-            flex-grow: 1;
-            padding: 20px;
-            background-color: #F8F9FA;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .message-display {
-            flex-grow: 1;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-
-        .message-input {
-            display: flex;
-            align-items: center;
-        }
-
-        .message-input input[type="text"] {
-            flex-grow: 1;
-            padding: 10px;
-            margin-right: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .message-input button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #2196F3; /* Changed to blue */
-            color: white;
-            cursor: pointer;
-        }
-
-        .message-input button:hover {
-            background-color: #1E88E5;
-        }
-
-        .bot-message .bubble {
-            background: #52c0f2;
-            color: white;
-            margin-left: auto;
-            order: 1;
-            width: 40%;
-          }
-          
-          .user-message .bubble {
-            background: #E0E0E0;
-          }
-
-          .message {
-            margin-bottom: 10px;
-            display: flex;
-          }
-          
-          .bubble {
-            padding: 10px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-          }
-    </style>
 </head>
 <body>
     <header class="header">
@@ -187,8 +18,24 @@
     </header>
     <main>
         <div class="side-panel">
-            <button>채팅방</button>
-            <button>기능선택</button>   
+            <div class="mode">
+                <button id="chatroom-btn">채팅방</button>
+                <button id="function-btn">기능선택</button> 
+            </div>  
+            <div class="check-list">
+                <div class="check-mode">
+                    <input type="checkbox" id="function1" name="function1" />
+                    <label for="function1">언어 순화</label>
+                </div>
+                <div class="check-mode">
+                    <input type="checkbox" id="function2" name="function2" />
+                    <label for="function2">MBTI 맞춤 대화</label>
+                </div>
+                <div class="check-mode">
+                    <input type="checkbox" id="function3" name="function3" />
+                    <label for="function3">타직군 간 대화</label>
+                </div>
+            </div>
         </div>
 
         <div class="message-section">

@@ -14,10 +14,12 @@ def index(request):
         request_id='e32760fd0a314c2e8ba2c5299e09d9ae'
     )
 
-    preset_text = [{"role":"system","content":""},{"role":"user","content":""}]
+    preset_text = [{"role":"system",
+                    "content":"너는 상냥한 상담인이야"},
+                   {"role":"user","content":"머신러닝을 설명해줘"}]
 
     request_data = {
-        'messages': [{"role":"system","content":""},{"role":"user","content":"안녕이라고 답해줘"}],
+        'messages': preset_text,
         'topP': 0.8,
         'topK': 0,
         'maxTokens': 256,
@@ -28,8 +30,9 @@ def index(request):
     }
 
     result = completion_executor.execute(request_data)
-    print(result)
-    return render(request, 'gpt/index.html')
+    print('=' * 50)
+    print(result[-2]['message']['content'])
+    return render(request, 'gpt/index2.html')
 
 def chat(request):
     

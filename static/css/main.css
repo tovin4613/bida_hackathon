@@ -229,8 +229,9 @@ main>.wrap>button:hover {
 }
 
 #sm-img{
-    width:400px;
+    width:300px;
     height:auto;
+    margin-right:20px;
 }
 
 #member-container{

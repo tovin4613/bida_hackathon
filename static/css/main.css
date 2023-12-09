@@ -14,6 +14,15 @@ html, body {
     color: white;
 }
 
+.o-section{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:20px;
+    margin-bottom:5s0px;
+}
+
 /* header */
 header {
     height: 80px;
@@ -60,8 +69,7 @@ header>.wrap>ul>li>a.active {
 .banner-container {
     position: relative;
     width:  500px;
-    height: 300px; /* 최대 너비 설정 */
-    margin: auto;
+    height: 300px;
     overflow:hidden;
 }
 
@@ -73,6 +81,13 @@ header>.wrap>ul>li>a.active {
 .banner-slide {
     min-width: 100%;
     box-sizing: border-box;
+}
+
+.banner-img{
+    width:70%;
+    height:auto;
+    display:block;
+    margin:auto;
 }
 
 img {
@@ -106,7 +121,6 @@ img {
 /* Optional: Add styling for indicator dots */
 .dot-container {
     text-align: center;
-    margin-top: 20px;
 }
 
 .dot {
@@ -126,11 +140,12 @@ img {
 
 /* footer */
 footer {
-    max-width: 720px;
     margin: 0 auto;
     height: 20px;
     padding: 20px;
     text-align: center;
+    background:#717171;
+    margin:0;
 }
 footer>p {
     margin: 0;
@@ -141,7 +156,11 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* 100% 높이를 차지하도록 설정 */
+    height: auto;
+    flex-direction:column;
+    flex-grow: 1;
+    min-height: 0; 
+    margin:20px;
 }
 
 main>.wrap {
@@ -169,19 +188,50 @@ main>.wrap>button:hover {
 }
 
 
-#main-container {
+.main-container {
+    width:80%;
+    height: 300px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin:30px;
+    flex-direction: row;
 }
 
-/* .meme-section {
-    width: 20%;
-} */
+.meme-section {
+    margin-right: 20px;
+}
 
-/* .description-section {
-    width: 80%;
-    padding: 30px; 
-    text-align: right;
-}  */
+.meme-section .banner-container {
+    width: 100%; /* 부모 요소인 .meme-section에 꽉 차도록 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    margin: auto; /* 가운데 정렬 */
+    overflow: hidden;
+    position:relative;
+}
+
+.banner-container img{
+    width:100%;
+}
+
+#img-container{
+    width:400px;
+    height: auto;
+}
+
+
+#kind-img{
+    width:400px;
+    height:auto;
+}
+
+#sm-img{
+    width:400px;
+    height:auto;
+}
+
+#member-container{
+    width:1000px;
+    height:auto;
+}

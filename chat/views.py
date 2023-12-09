@@ -4,13 +4,14 @@ from openai import OpenAI
 from django.core import serializers
 from .api import CompletionExecutor
 import json
+from .models import Message, ChatRoom
 chat_data = []
 def index(request):
-    print('a')
+
     if request.method == 'POST':
-        print('a')
+
         prompt = request.POST.get('question')
-        print(prompt)
+
         completion_executor = CompletionExecutor(
             host='https://clovastudio.stream.ntruss.com',
             api_key='NTA0MjU2MWZlZTcxNDJiYwbOU8C6YbcVmMu3aJBaodWZoI8dR6vOrKMQ1xbcQovxwfDupOqJtgfub+cLbH+sFqmfgeVe2vDqmLj/3vYD6TE3ZM/NoK5rHkx6YMbQzCgE1qYGq6SzWY/YerMXf/7qaYKyYCR+VbC9JrFTF36TZC8tej/zTdnrVT8edk3FPA6f12g0TAfNvvqxITigglKjoGyepGyBQMbCVlDA7msneC4=',
@@ -34,8 +35,7 @@ def index(request):
         }
         
         result = completion_executor.execute(request_data)
-        print('=' * 50)
-        print(result[-2]['message']['content'])
+
         chat_data.append(result[-2]['message']['content'])
         context = {
             'question': prompt,
@@ -47,3 +47,14 @@ def index(request):
 def chat(request):
     
     return render(request, 'gpt/result.html') 
+
+def chat_view(request, room_name):
+    if request.method == "POST":
+        author = request.user
+        message = request.POST.get('message')
+        room = ChatRoom.objects.get(name=room_name)
+
+        Message.objects.create(author=author, content=message, room=room)
+
+    messages = Message.objects.filter(room__name=room_name)
+    return render(request, 'gpt/chat.html', {'messages': messages})

@@ -28,7 +28,6 @@ class CompletionExecutor:
                         try:
                             json_line = json.loads(json_string)  # JSON 형식의 문자열을 파이썬 딕셔너리로 변환
                             output.append(json_line)
-                            print(json_line)
                         except json.JSONDecodeError:
                             print('This line is not a valid JSON.')
         return output

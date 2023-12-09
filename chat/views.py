@@ -36,4 +36,4 @@ def index(request):
 
 def chat(request):
     
-    return render(request, 'gpt/result2.html') 
+    return render(request, 'gpt/result.html') 

@@ -1,18 +1,39 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Django</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <h1><a href="/">Django</a></h1>
-        <ol>
-            <li><a href="/chatgpt/">ChatGPT API 사용</a></li>
-            <li><a href="/signlanguagetochatgpt/">수어-ChatGPT 연동</a></li>
-            <li><a href="/selfchatgpt/">내가 만든 ChatGPT</a></li>
-            <li><a href="/selfsignlanguagetochatgpt/">내가 만든 수어-ChatGPT 연동</a></li>
-        </ol>
-        <h2>Django</h2>
-        <p><a href="https://www.djangoproject.com/" target="_blank">Django</a>는 Python으로 작성된 오픈 소스 웹 프레임워크로, 빠르고 쉬운 웹 개발을 가능하게 합니다.</p>
-    </body>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비비빅</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    <!-- header.header>nav.wrap>ul>li*3 -->
+    <header class="header">
+        <nav class="wrap">
+            <label class="logo">비비빅</label>
+            <ul>
+                <li><a href="{% url 'index' %}" class="active">Home</a></li>
+                <li><a href="{% url 'chat:index' %}">Chat</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- main>section.wrap -->
+    <main>
+        <section class="wrap">
+
+            <a href="{% url 'chat:index' %}" type="button"><img src="https://img1.daumcdn.net/thumb/R1024x0/?fname=https://t1.daumcdn.net/cafeattach/1IHuH/84d66918f75612b229dbca04bc20b5ccfe1364eb" height ="500" width="800" ></a>
+
+        </section>
+    </main>
+    <!-- footer.footer>p{All rights reserved. @KT Aivle} -->
+    <footer class="footer">
+        
+    </footer>
+</body>
 </html>

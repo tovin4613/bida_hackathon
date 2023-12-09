@@ -1,7 +1,10 @@
 *{
-    font-family: 'NanumHaRamCe';
+    font-family: 'NanumGothic';
 }
 
+.logo{
+    font-family: 'NanumHaRamCe';
+}
 html, body {
     margin: 0;
     height: 100%;

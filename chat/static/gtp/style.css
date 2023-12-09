@@ -1,6 +1,9 @@
 *{
+  font-family: 'NanumGothic';
+}
+
+.logo{
   font-family: 'NanumHaRamCe';
-  font-size: 20;
 }
 
 html, body {

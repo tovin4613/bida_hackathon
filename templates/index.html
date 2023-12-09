@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스며듦</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1200px-ChatGPT_logo.svg.png">
+    <link rel="icon" href="{% static "img/logo2.png" %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -26,11 +26,80 @@
     </header>
     <!-- main>section.wrap -->
     <main>
-        <section class="wrap">
+        <div id="main-container">
+            <h1>오늘의 밈</h1>
+            <div class="banner-container">
+                <div class="banner-slides">
+                    <div class="banner-slide">
+                        <img src="{% static "img/img1.jpg" %}" alt="Image 1">
+                    </div>
+                    <div class="banner-slide">
+                        <img src="{% static "img/img2.jpg" %}" alt="Image 2">
+                    </div>
+                    <div class="banner-slide">
+                        <img src="{% static "img/img3.png" %}" alt="Image 3">
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+            
+                <!-- Optional: Navigation buttons -->
+                <div class="prev" onclick="prevSlide()">❮</div>
+                <div class="next" onclick="nextSlide()">❯</div>
+            
+                <!-- Optional: Indicator dots -->
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <!-- Add more dots as needed -->
+                </div>
+            </div>
+        </div>
 
-            <a href="{% url 'chat:index' %}" type="button"><img src="https://img1.daumcdn.net/thumb/R1024x0/?fname=https://t1.daumcdn.net/cafeattach/1IHuH/84d66918f75612b229dbca04bc20b5ccfe1364eb" height ="500" width="800" ></a>
-
-        </section>
+        <script>
+            var slideIndex = 1;
+        
+            function showSlides(index) {
+                var slides = document.querySelector('.banner-slides');
+                var dots = document.querySelectorAll('.dot');
+        
+                if (index > slides.children.length) {
+                    slideIndex = 1;
+                }
+        
+                if (index < 1) {
+                    slideIndex = slides.children.length;
+                }
+        
+                for (var i = 0; i < slides.children.length; i++) {
+                    slides.children[i].style.display = 'none';
+                }
+        
+                for (var i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(' active-dot', '');
+                }
+        
+                slides.children[slideIndex - 1].style.display = 'block';
+                dots[slideIndex - 1].className += ' active-dot';
+            }
+        
+            function nextSlide() {
+                showSlides(slideIndex += 1);
+            }
+        
+            function prevSlide() {
+                showSlides(slideIndex -= 1);
+            }
+        
+            function currentSlide(index) {
+                showSlides(slideIndex = index);
+            }
+        
+            // Auto-play slides
+            setInterval(function () {
+                nextSlide();
+            }, 3000); // Change slide every 3 seconds
+        </script>
     </main>
     <!-- footer.footer>p{All rights reserved. @KT Aivle} -->
     <footer class="footer">

@@ -5,3 +5,22 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+$(document).ready(function() {
+    $('#sendRequest').click(function() {
+        var inputValue = $('#question').val();
+        $.ajax({
+            url: '',
+            type: 'POST',
+            data: {
+                'question': inputValue
+            },
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            },
+        });
+    });
+});

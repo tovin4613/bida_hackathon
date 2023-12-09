@@ -42,10 +42,11 @@
         <div class="message-section">
             <div class="message-display">
                 <!-- Chat messages will be displayed here -->
-                
+                {% for r in result  %}
                     <div class="message user-message">
+                        
                         <div class="bubble">
-                            <span class="text">{{ result }}</span>
+                            <span class="text">{{ r }}</span>
                         </div>
                         
                         {% comment %} </div>
@@ -54,18 +55,21 @@
                             <span class="text">{{}}</span>
                         </div> {% endcomment %}
                     </div>
+                {% endfor %}
         
             </div>
 
             <form action="" method="post" entype="application/x-www-form-urlencoded">
-                <div class="message-input">
                 {% csrf_token %}
-                  <input type="text" placeholder="메시지를 입력하세요..." name=question>
-                  <button type="submit">보내기</button>
+                <div class="message-input">
+                    <input type="text" placeholder="메시지를 입력하세요..." name=question>
+                    <button name="sendRequest">보내기</button>
                 </div>
             </form>
             </div>
         </div>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

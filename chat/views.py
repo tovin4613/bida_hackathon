@@ -4,7 +4,7 @@ from openai import OpenAI
 from django.core import serializers
 from .api import CompletionExecutor
 import json
-
+chat_data = []
 def index(request):
     print('a')
     if request.method == 'POST':
@@ -36,9 +36,10 @@ def index(request):
         result = completion_executor.execute(request_data)
         print('=' * 50)
         print(result[-2]['message']['content'])
+        chat_data.append(result[-2]['message']['content'])
         context = {
             'question': prompt,
-            'result': result[-2]['message']['content']  # 원하는 값을 context에 추가
+            'result': chat_data  # 원하는 값을 context에 추가
         }
         return render(request, 'gpt/index.html',context)
     return render(request, 'gpt/index.html')
